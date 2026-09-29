@@ -14,6 +14,7 @@ import (
 )
 
 func main() {
+	// CI smoke: harmless comment so Jenkins Multibranch can run order on this branch/PR.
 	// Initialize database connection
 	database := db.GetDB()
 	defer database.Close()
