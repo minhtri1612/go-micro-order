@@ -17,6 +17,7 @@ func main() {
 	// CI smoke: harmless comment so Jenkins Multibranch can run order on this branch/PR.
 	// CI smoke 2: new commit so main bump can hit the Jenkins Rollout button.
 	// CI smoke 3: exercise Parallel tests (dependency/business/k6) before Promote.
+	// CI smoke 4: dest bump then Jenkins Build with Parameters TARGET_ENV=prod.
 	// Initialize database connection
 	database := db.GetDB()
 	defer database.Close()
