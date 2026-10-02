@@ -8,7 +8,7 @@ RUN go mod download
 COPY . .
 RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -o /service .
 
-# Final image follows docker build --platform (linux/amd64 for Kind).
+# Final image follows docker build --platform (linux/amd64).
 FROM alpine:latest
 WORKDIR /app
 COPY --from=builder /service .
