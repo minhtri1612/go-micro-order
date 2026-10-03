@@ -375,7 +375,7 @@ func (oc *OrderController) CreateOrderWithPayment(c *gin.Context) {
 
 // GetOrders returns all orders
 func (oc *OrderController) GetOrders(c *gin.Context) {
-	rows, err := oc.DB.Query("SELECT id, customer_id, product_id, quantity, total_price, status, created_at FROM orders")
+	rows, err := oc.DB.Query("SELECT id, customer_id, product_id, quantity, total_price, status, created_at FROM orders ORDER BY id DESC")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
