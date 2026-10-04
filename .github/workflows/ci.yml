@@ -1,0 +1,21 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.24"
+      - name: test and vet
+        run: |
+          set -euo pipefail
+          pkgs="$(go list ./... | grep -v /tests/integration)"
+          go test ${pkgs}
+          go vet ${pkgs}
